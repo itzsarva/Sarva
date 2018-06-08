@@ -21,6 +21,8 @@ public @interface EquinitiEmail {
 
 	public String message() default "Please enter a valid email Id, Email Id should be in the form of abc@equiniti.com";
 
+	Class<?>[] groups() default {};
+
 	public Class<? extends Payload>[] payload() default {};
 
 }

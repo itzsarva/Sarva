@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
@@ -94,7 +94,10 @@ tbody td {
 }
 </style>
 
-
+<!-- Spring tag lib for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- JSTL Tag -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="/js/modernizr.custom.js"></script>
 </head>
 <body>
@@ -104,38 +107,38 @@ tbody td {
 			style="font-size: 21px;"
 			class="glyphicon glyphicon glyphicon-screenshot"></span> Leave
 			Tracker</span> </header>
-		<div class="row" style="margin-top:10%">
-			<div class="shadow col-lg-2  col-lg-offset-5">
-				<h1 align="center">Log In</h1>
-				<table align="center" cellspacing="10">
-					<tr>
-						<td>Employee ID <span class="empDetails"></span></td>
-						<td><input type="text" name="txt_emp_id"></td>
-					</tr>
-					<tr>
-						<td>Password <span class="empDetails"></span></td>
-						<td><input type="password" name="txt_emp_password"></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
+		<div class="row" style="margin-top: 10%">
+			<form:form action="/viewtimeSheet" modelAttribute="loginBean"
+				method="post">
+				<div class="shadow col-lg-2  col-lg-offset-5">
+					<h1 align="center">Log In</h1>
+					<table align="center" cellspacing="10">
+						<tr>
+							<td><label for="txt_emp_id">Employee ID</label><span
+								class="empDetails"></span></td>
+							<td><form:input path="empId" id="txt_emp_id" /> <form:errors
+									path="empId" cssClass="error" element="div" />
+								<div id="empId.errors" class="error"></div></td>
+						</tr>
+						<tr>
+							<td><label for="txt_emp_password">Password</label><span
+								class="empDetails"></span></td>
+							<td><form:input path="password" id="txt_emp_password" /> <form:errors
+									path="password" cssClass="error" element="div" />
+								<div id="password.errors" class="error"></div></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
 								<button class="btn btn-success btn-md">
 									<span style="font-size: 16px;"
 										class="glyphicon glyphicon-log-in"></span> &nbsp;Log In
 								</button>
-						</td>
-
-					</tr>
-				</table>
-			</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form:form>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
 </body>
 </html>
